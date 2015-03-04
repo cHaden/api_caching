@@ -16,9 +16,3 @@
     Following: <%= @profile.number_following %>
   </p>
 </div>
-
-<div class="repo-list">
-  <% @repositories.each do |repo| %>
-    <%= render "repo", :repo => repo %>
-  <% end %>
-</div>
