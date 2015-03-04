@@ -20,13 +20,13 @@ class Profile < ActiveRecord::Base
     @content = response
 
     if response["login"]
-      Profile.create(username: response["login"],
+      return Profile.create(username: response["login"],
         avatar_url: response["avator_url"],
         location: response["location"],
         company_name: response["company"],
         number_of_followers: response["followers"],
         number_following: response["following"],
-        repository_list: RepositoryList.new( username )
+        # repository_list: RepositoryList.new( username )
         )
 
     else
@@ -34,28 +34,28 @@ class Profile < ActiveRecord::Base
     end
   end
 
-  def username
-    @content["login"]
-  end
-
-  def avatar_url
-    @content["avatar_url"]
-  end
-
-  def location
-    @content["location"]
-  end
-
-  def company_name
-    @content["company"]
-  end
-
-  def number_of_followers
-    @content["followers"]
-  end
-
-  def number_following
-    @content["following"]
-  end
+  # def username
+  #   @content["login"]
+  # end
+  #
+  # def avatar_url
+  #   @content["avatar_url"]
+  # end
+  #
+  # def location
+  #   @content["location"]
+  # end
+  #
+  # def company_name
+  #   @content["company"]
+  # end
+  #
+  # def number_of_followers
+  #   @content["followers"]
+  # end
+  #
+  # def number_following
+  #   @content["following"]
+  # end
 
 end
