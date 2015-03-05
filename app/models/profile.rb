@@ -1,13 +1,6 @@
 class Profile < ActiveRecord::Base
 
-  def initialize(username)
-    @content = HTTParty.get(
-        "https://api.github.com/users/#{username}",
-        :headers => {"Authorization" => "token #{ENV['GITHUB_TOKEN']}",
-                     "User-Agent" => "anyone"
-                    }
-    )
-  end
+
 
   def self.create_from_username( username )
     response = HTTParty.get(
@@ -17,23 +10,24 @@ class Profile < ActiveRecord::Base
                   }
       )
 
-    @content = response
+    # @content = response
 
     if response["login"]
-      return Profile.create(username: response["login"],
-        avatar_url: response["avator_url"],
+      Profile.create(username: response["login"],
+        avatar_url: response["avatar_url"],
         location: response["location"],
         company_name: response["company"],
         number_of_followers: response["followers"],
         number_following: response["following"],
-        # repository_list: RepositoryList.new( username )
+        # repository_list: RepositoryList.new( username ).object_id
         )
+      # return response
 
     else
       return nil
     end
   end
-
+  #
   # def username
   #   @content["login"]
   # end

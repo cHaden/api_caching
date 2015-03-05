@@ -6,7 +6,10 @@ class RepositoriesController < ApplicationController
   def show
     @profile = Profile.find_by_username(params[:username]) ||
         Profile.create_from_username(params[:username])
-    @repositories = RepositoryList.new(params[:username]).repositories
+    # @repositories = RepositoryList.create_from_profile_id(params[:username], @profile.id)
+
+        # @repositories = ObjectSpace._id2ref(@profile.repository_list.to_i)
+    # @repositories = RepositoryList.new(params[:username]).repositories
   end
 
   # def show

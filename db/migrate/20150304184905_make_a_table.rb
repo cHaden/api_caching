@@ -7,7 +7,16 @@ class MakeATable < ActiveRecord::Migration
       t.column :company_name, :string
       t.column :number_of_followers, :string
       t.column :number_following, :string
-      t.column :repository_list, :text
+    end
+
+    create_table :repositories do |t|
+      t.column :name, :string
+      t.column :url, :string
+      t.column :forks_count, :integer
+      t.column :stargazers_count, :integer
+      t.column :updated_at, :date
+      t.column :language, :string
+      t.column :profile_id, :integer
     end
   end
 end

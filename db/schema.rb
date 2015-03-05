@@ -20,7 +20,16 @@ ActiveRecord::Schema.define(version: 20150304184905) do
     t.string "company_name"
     t.string "number_of_followers"
     t.string "number_following"
-    t.text   "repository_list"
+  end
+
+  create_table "repositories", force: :cascade do |t|
+    t.string  "name"
+    t.string  "url"
+    t.integer "forks_count"
+    t.integer "stargazers_count"
+    t.date    "updated_at"
+    t.string  "language"
+    t.integer "profile_id"
   end
 
 end
